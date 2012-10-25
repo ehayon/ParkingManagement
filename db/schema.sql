@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `ParkingManagementSystem`;
 
+USE `ParkingManagementSystem`;
+
 CREATE TABLE IF NOT EXISTS `users`(
 	`id_user` INT NOT NULL AUTO_INCREMENT,
 	`username` VARCHAR(30) NOT NULL,
@@ -59,3 +61,4 @@ CREATE TABLE IF NOT EXISTS `user_parkinglots_subscriptions`(
 	FOREIGN KEY(`id_user`) REFERENCES users(`id_user`),
 	FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`)
 );
+
