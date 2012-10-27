@@ -9,29 +9,35 @@
  *********************************
  */
 
+include("database_interface.php");
+
 class Database implements DatabaseInterface {
 
 	protected $link;
 	protected $connected;
 
 	function setup($host, $user, $pass, $db) {
-		if($link = mysql_connect($host, $user, $pass)) {
+		if($this->link = mysql_connect($host, $user, $pass)) {
 			// successfully connected to mysql server
-			mysql_select_db($db, $link);
-			$connected = true;
+			mysql_select_db($db, $this->link);
+			$this->connected = true;
 		}
 	}
-    function connect($host, $user, $pass){
-
-    }
     function disconnect() {
-
+        mysql_close($this->link);
     }
     function select_db($db) {
 
     }
-    function select($tbl, $conditions) {
-
+    function find($tbl, $conditions, $order, $limit) {
+        if($this->connected) {
+            $res = mysql_query("SELECT * FROM $tbl WHERE $conditions");
+            $data = array();
+            while($row = mysql_fetch_assoc($res)) {
+                array_push($data, $row);
+            }
+            return $data;
+        }
     }
     function insert($tbl, $data) {
 
@@ -41,8 +47,8 @@ class Database implements DatabaseInterface {
     }
 
     function __construct() {
-        $connected = false;
-
+        $this->connected = false;
+        $this->link = null;
     }
 
     function __destruct() {
