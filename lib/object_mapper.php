@@ -10,13 +10,17 @@ require_once 'database_interface.php';
 abstract class ObjectMapper {
 
     protected static $_db = null;
-    protected static $_name;
+    protected static $table_name;
     private $data;
     public $is_new;
 
     public function __construct($d=array()) {
         $this->data = $d;
         $this->is_new = true;
+    }
+
+    public static function set_table_name($tbl) {
+        static::$table_name = $tbl;
     }
 
     public function __get($attr) {
@@ -56,8 +60,8 @@ abstract class ObjectMapper {
      * By default, this is also assumed to be the name of the db table
      */
     public static function getName() {
-        if(isset(static::$_name)) {
-            return static::$_name;
+        if(isset(static::$table_name)) {
+            return static::$table_name;
         } else {
             return strtolower(get_called_class());
         }
@@ -83,6 +87,14 @@ abstract class ObjectMapper {
     public static function findOne($conditions, $order) {
         $res = static::find($conditions, $order, 1);
         return (count($res) >= 1) ? $res[0] : null;
+    }
+
+    public function save() {
+        if($this->is_new) {
+            static::getDB()->insert(static::getName(), $this->data);
+        } else {
+            static::getDB()->update(static::getName(), $this->data);
+        }
     }
 
 

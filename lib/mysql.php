@@ -29,9 +29,29 @@ class Database implements DatabaseInterface {
     function select_db($db) {
 
     }
-    function find($tbl, $conditions, $order, $limit) {
+
+    public function build_where($conditions) {
+        $res = array();
+        foreach($conditions as $ck => $cv) {
+            $res[] = "`$ck` = '$cv'";
+        }
+        return $res;
+    }
+    public function find($tbl, array $conditions, $order=null, $limit=null) {
         if($this->connected) {
-            $res = mysql_query("SELECT * FROM $tbl WHERE $conditions");
+            $sql = "SELECT * FROM $tbl";
+            if(count($conditions) > 0) {
+                $sql .= " WHERE ";
+                $sql .= join(" AND ", $this->build_where($conditions));
+            }
+            if(isset($order)) {
+                $sql .= " ORDER BY $order";
+            }
+            if(isset($limit)) {
+                $sql .= " LIMIT $limit";
+            }
+
+            $res = mysql_query($sql, $this->link);
             $data = array();
             while($row = mysql_fetch_assoc($res)) {
                 array_push($data, $row);
@@ -39,19 +59,69 @@ class Database implements DatabaseInterface {
             return $data;
         }
     }
-    function insert($tbl, $data) {
+    public function insert($tbl, &$data) {
+        // build an insert query
+        $pk = $this->get_primary_key($tbl);
+        $fields = array();
+        $elements = array();
+        foreach($data as $k => $v) {
+            $fields[] = $k;
+            $elements[] = $v;
+        }
+        $sql = "INSERT INTO $tbl ";
+        $sql .= "(".join(",", $fields).") ";
+        $sql .= "VALUES('".join("','", $elements)."')";
+        $res = mysql_query($sql, $this->link);
+        // update the data with the id of the newly inserted item
+        $data[$pk] = mysql_insert_id($this->link);
+        print_r($data);
+    }
+    public function delete($tbl, $conditions) {
 
     }
-    function delete($tbl, $conditions) {
 
+    public function get_primary_key($tbl) {
+        if($this->connected) {
+            $res = mysql_query("DESCRIBE $tbl");
+            while($row = mysql_fetch_assoc($res)) {
+                if(isset($row["Key"]) && $row["Key"] == "PRI")
+                    return $row["Field"];
+            }
+            return null;
+        }
     }
 
-    function __construct() {
+    protected function prepare_data($data) {
+        $res = array();
+        foreach($data as $k => $v)
+            $res[] = "`$k`='$v'";
+        return $res;
+    }
+    public function update($tbl, $data, $conditions=array()) {
+        // use the primary key for the conditions
+        $pk = $this->get_primary_key($tbl);
+        $conditions = array_merge(array($pk => $data[$pk]), $conditions);
+
+        // we shouldn't change the primary key field...
+        unset($data[$pk]);
+
+        $u_data = $this->prepare_data($data);
+
+        $sql = "UPDATE $tbl SET ";
+        $sql .= join(",", $u_data);
+        if(count($conditions) > 0) {
+            $sql .= " WHERE ";
+            $sql .= join(" AND ", $this->build_where($conditions));
+        }
+        $res = mysql_query($sql, $this->link);
+    }
+
+    public function __construct() {
         $this->connected = false;
         $this->link = null;
     }
 
-    function __destruct() {
+    public function __destruct() {
 
     }
 
