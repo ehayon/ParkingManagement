@@ -11,19 +11,6 @@ include("lib/model.php");
 $db = new Database();
 $db->setup("localhost", "root", "", "ParkingManagementSystem");
 
-$data = $db->find("parkinglots", array("status" => "1", "available" => "20"), null, 20);
-print_r($data);
-
-$db->update("parkinglots", array(
-    "id_parkinglot" => 1,
-    "status" => 1,
-    "capacity" => 323
-));
-
-print "<br />Primary key for parkinglots is ". $db->get_primary_key("parkinglots") ."<br />";
-
-print "<br />======SOME MORE TESTS=======<br />";
-
 Model::setDB($db);
 
 
@@ -45,6 +32,13 @@ $lot2->location = "New Location";
 $lot2->status = "0";
 $lot2->available = "3900";
 $lot2->capacity = "10000";
+$lot2->save();
+
+$lot2->location = "Changed location";
+$lot2->save();
+
+
+$lot2->status = 0;
 $lot2->save();
 
 print "Lot location is ". $lot2->location ."<br />";

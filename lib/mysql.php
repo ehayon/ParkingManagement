@@ -113,13 +113,10 @@ class Database implements DatabaseInterface {
         }
     }
 
-    public function update($tbl, $data, $conditions=array()) {
+    public function update($tbl, &$data, $conditions=array()) {
         // use the primary key for the conditions
         $pk = $this->get_primary_key($tbl);
         $conditions = array_merge(array($pk => $data[$pk]), $conditions);
-
-        // we shouldn't change the primary key field...
-        unset($data[$pk]);
 
         $u_data = $this->build_sql($data);
 

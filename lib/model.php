@@ -92,6 +92,7 @@ abstract class Model {
     public function save() {
         if($this->is_new) {
             static::getDB()->insert(static::getName(), $this->data);
+            $this->is_new = false;
         } else {
             static::getDB()->update(static::getName(), $this->data);
         }
