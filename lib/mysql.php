@@ -30,19 +30,31 @@ class Database implements DatabaseInterface {
 
     }
 
-    public function build_where($conditions) {
+    /**
+     * @param $conditions Conditions
+     * @return array
+     */
+    public function build_sql($conditions) {
         $res = array();
         foreach($conditions as $ck => $cv) {
             $res[] = "`$ck` = '$cv'";
         }
         return $res;
     }
+
+    /**
+     * @param $tbl Table
+     * @param array $conditions Conditions
+     * @param null $order Order
+     * @param null $limit Limit
+     * @return array Response as associative array
+     */
     public function find($tbl, array $conditions, $order=null, $limit=null) {
         if($this->connected) {
             $sql = "SELECT * FROM $tbl";
             if(count($conditions) > 0) {
                 $sql .= " WHERE ";
-                $sql .= join(" AND ", $this->build_where($conditions));
+                $sql .= join(" AND ", $this->build_sql($conditions));
             }
             if(isset($order)) {
                 $sql .= " ORDER BY $order";
@@ -59,6 +71,11 @@ class Database implements DatabaseInterface {
             return $data;
         }
     }
+
+    /**
+     * @param $tbl Table
+     * @param $data Data
+     */
     public function insert($tbl, &$data) {
         // build an insert query
         $pk = $this->get_primary_key($tbl);
@@ -76,10 +93,15 @@ class Database implements DatabaseInterface {
         $data[$pk] = mysql_insert_id($this->link);
         print_r($data);
     }
+
     public function delete($tbl, $conditions) {
 
     }
 
+    /**
+     * @param $tbl Table
+     * @return null | string Primary key for table $tbl
+     */
     public function get_primary_key($tbl) {
         if($this->connected) {
             $res = mysql_query("DESCRIBE $tbl");
@@ -91,12 +113,6 @@ class Database implements DatabaseInterface {
         }
     }
 
-    protected function prepare_data($data) {
-        $res = array();
-        foreach($data as $k => $v)
-            $res[] = "`$k`='$v'";
-        return $res;
-    }
     public function update($tbl, $data, $conditions=array()) {
         // use the primary key for the conditions
         $pk = $this->get_primary_key($tbl);
@@ -105,13 +121,13 @@ class Database implements DatabaseInterface {
         // we shouldn't change the primary key field...
         unset($data[$pk]);
 
-        $u_data = $this->prepare_data($data);
+        $u_data = $this->build_sql($data);
 
         $sql = "UPDATE $tbl SET ";
         $sql .= join(",", $u_data);
         if(count($conditions) > 0) {
             $sql .= " WHERE ";
-            $sql .= join(" AND ", $this->build_where($conditions));
+            $sql .= join(" AND ", $this->build_sql($conditions));
         }
         $res = mysql_query($sql, $this->link);
     }

@@ -7,7 +7,7 @@
 
 require_once 'database_interface.php';
 
-abstract class ObjectMapper {
+abstract class Model {
 
     protected static $_db = null;
     protected static $table_name;

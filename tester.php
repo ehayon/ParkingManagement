@@ -6,7 +6,7 @@
  */
 
 include("lib/mysql.php");
-include("lib/object_mapper.php");
+include("lib/model.php");
 
 $db = new Database();
 $db->setup("localhost", "root", "", "ParkingManagementSystem");
