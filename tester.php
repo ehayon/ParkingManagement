@@ -24,10 +24,10 @@ print "<br />Primary key for parkinglots is ". $db->get_primary_key("parkinglots
 
 print "<br />======SOME MORE TESTS=======<br />";
 
-ObjectMapper::setDB($db);
+Model::setDB($db);
 
 
-class ParkingLot extends ObjectMapper {
+class ParkingLot extends Model {
     protected static $table_name = "parkinglots"; // we can override the table name for
 }
 
