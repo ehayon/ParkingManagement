@@ -135,7 +135,9 @@ class Database implements DatabaseInterface {
     }
 
     public function __destruct() {
-
+        mysql_close($this->link);
+        $this->link = null;
+        $this->connected = false;
     }
 
 
