@@ -14,27 +14,48 @@ abstract class Model {
     private $data;
     public $is_new;
 
+    /**
+     * @param array $d Data
+     */
     public function __construct($d=array()) {
         $this->data = $d;
         $this->is_new = true;
     }
 
+    /**
+     * @param $tbl Table name in DataStore
+     */
     public static function set_table_name($tbl) {
         static::$table_name = $tbl;
     }
 
+    /**
+     * @param $attr PHP magic method attribute
+     * @return data for attribute $attr
+     */
     public function __get($attr) {
         return static::__isset($attr) ? $this->data[$attr] : null;
     }
 
+    /**
+     * @param $attr PHP magic isset attribute
+     * @return bool Whether or not $attr is set in $this->data
+     */
     public function __isset($attr) {
         return isset($this->data[$attr]);
     }
 
+    /**
+     * @param $attr PHP magic set attribute
+     * @param $val Value to set for attribute $attr
+     */
     public function __set($attr, $val) {
         $this->data[$attr] = $val;
     }
 
+    /**
+     * @param $attr PHP magic unset attribute
+     */
     public function __unset($attr) {
         unset($this->data[$attr]);
     }
@@ -84,11 +105,19 @@ abstract class Model {
         return $results;
     }
 
+    /**
+     * @param $conditions
+     * @param $order
+     * @return static::object
+     */
     public static function findOne($conditions, $order) {
         $res = static::find($conditions, $order, 1);
         return (count($res) >= 1) ? $res[0] : null;
     }
 
+    /**
+     * Save the object to a non-volatile DataStore
+     */
     public function save() {
         if($this->is_new) {
             static::getDB()->insert(static::getName(), $this->data);
@@ -97,7 +126,5 @@ abstract class Model {
             static::getDB()->update(static::getName(), $this->data);
         }
     }
-
-
 
 }
