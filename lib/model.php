@@ -204,7 +204,6 @@ abstract class Model {
      **********************************************/
 
     public static function has_one($entity) {
-        // dynamically build some methods
         // we need to set up an associations array so we know how to __set and __get
         $associations =& self::$associations;
         $class = get_called_class();
@@ -216,9 +215,6 @@ abstract class Model {
             'key'           =>  'id_'.strtolower(get_class($entity)),
             'class_name'    =>  get_class($entity)
         );
-
-        $func = create_function('$instance', 'print "Name of entity is: '.$entity->getName().' --- $instance->comment_id";');
-        static::add_method(strtolower($entity->getName()), $func);
     }
 
 
