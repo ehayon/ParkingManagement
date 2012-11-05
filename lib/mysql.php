@@ -66,10 +66,16 @@ class Database implements DatabaseInterface {
             $res = mysql_query($sql, $this->link);
             $data = array();
             while($row = mysql_fetch_assoc($res)) {
+                $row['id'] = $row[$this->get_primary_key($tbl)];
                 array_push($data, $row);
             }
             return $data;
         }
+    }
+
+    public function findOne($tbl, $conditions, $order) {
+        $res = $this->find($tbl, $conditions, $order, 1);
+        return (count($res) >= 1) ? $res[0] : null;
     }
 
     /**
@@ -90,7 +96,9 @@ class Database implements DatabaseInterface {
         $sql .= "VALUES('".join("','", $elements)."')";
         $res = mysql_query($sql, $this->link);
         // update the data with the id of the newly inserted item
-        $data[$pk] = mysql_insert_id($this->link);
+        $pkd = mysql_insert_id($this->link);
+        $data = $this->findOne($tbl, array($pk => $pkd), null);
+
         print_r($data);
     }
 
@@ -115,6 +123,7 @@ class Database implements DatabaseInterface {
 
     public function update($tbl, &$data, $conditions=array()) {
         // use the primary key for the conditions
+        unset($data['id']);
         $pk = $this->get_primary_key($tbl);
         $conditions = array_merge(array($pk => $data[$pk]), $conditions);
 
