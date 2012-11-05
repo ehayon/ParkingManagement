@@ -231,7 +231,6 @@ abstract class Model {
     }
 
     public static function save_association($instance, $attr, $val, $association_info) {
-        print "ATTEMPTING TO SAVE THE ASSOCIATION";
         // we want to handle each type of association a little differently on save
         switch($association_info['type']) {
             case 'has_one':
