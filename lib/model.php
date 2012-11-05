@@ -10,7 +10,7 @@
  * Requirements:
  * has_one: local entity requires id_<entity>
  *  for example: parkinglot has_one comment
- *  parkinglot.id_comment && comment.id_comment is required
+ *  ParkingLots.id_comment && Comments.id_comment is required
  *
  */
 
