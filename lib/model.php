@@ -6,6 +6,16 @@
  */
 
 /**
+ * Notes on associations:
+ * Requirements:
+ * has_one: local entity requires id_<entity>
+ *  for example: parkinglot has_one comment
+ *  parkinglot.id_comment && comment.id_comment is required
+ *
+ */
+
+
+/**
  * TODO: __get for an association entity
  * TODO: has_many, belongs_to has_many_through
  */
