@@ -101,11 +101,11 @@ abstract class Model {
      */
     public function __set($attr, $val) {
         // check first to see if this is an association
-        $table =& self::$associations;
+        $associations =& self::$associations;
         $class = get_called_class();
         // is this $attr part of an association?
-        if(array_key_exists($class, $table) && array_key_exists($attr, $table[$class])) {
-            static::save_association($this, $attr, $val, $table[$class][$attr]);
+        if(array_key_exists($class, $associations) && array_key_exists($attr, $associations[$class])) {
+            static::save_association($this, $attr, $val, $associations[$class][$attr]);
         } else {
             $this->data[$attr] = $val;
         }
