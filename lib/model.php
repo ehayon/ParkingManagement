@@ -246,7 +246,10 @@ abstract class Model {
     protected static function get_association($instance, $attr, $association_info) {
         switch($association_info['type']) {
             case 'has_one':
-                //$entity =
+                $entity = Comment::findOne(array(
+                    $association_info['key'] => $instance->__get($association_info['key'])
+                ), null);
+                return $entity;
                 break;
             case 'has_many':
                 break;

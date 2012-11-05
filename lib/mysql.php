@@ -36,7 +36,6 @@ class Database implements DatabaseInterface {
      */
     public function build_sql($conditions) {
         $res = array();
-        var_dump($conditions);
         foreach($conditions as $ck => $cv) {
             $res[] = "`$ck` = '$cv'";
         }
@@ -64,7 +63,7 @@ class Database implements DatabaseInterface {
                 $sql .= " LIMIT $limit";
             }
 
-            $res = mysql_query($sql, $this->link);
+            $res = mysql_query($sql, $this->link) or die (mysql_error());
             $data = array();
             while($row = mysql_fetch_assoc($res)) {
                 $row['id'] = $row[$this->get_primary_key($tbl)];
@@ -99,8 +98,6 @@ class Database implements DatabaseInterface {
         // update the data with the id of the newly inserted item
         $pkd = mysql_insert_id($this->link);
         $data = $this->findOne($tbl, array($pk => $pkd), null);
-
-        print_r($data);
     }
 
     public function delete($tbl, $conditions) {

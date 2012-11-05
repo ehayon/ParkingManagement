@@ -47,4 +47,6 @@ if(isset($lot)) {
     $lot->comment = $comment1;
     $lot->save();
     print '<br />$lot->comment = '.$lot->id_comment.'<br />';
+    print "<br /><br />GET Comment for lot: ";
+    var_dump($lot->comment);
 }
