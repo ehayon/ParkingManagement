@@ -24,13 +24,27 @@ class Comment extends Model {
 
 //$lot = ParkingLot::findOne("status='1'", "", "");
 ParkingLot::has_one(new Comment);
-$comment1 = Comment::findOne(array("id_comment"=>19), null);
-$comment2 = Comment::findOne(array("id_comment"=>20), null);
-
-
-$lot = ParkingLot::findOne(array("id_parkinglot"=>2), null);
-
-$lot->location = "test lot location";
-$lot->comment = $comment1;
+/* // Create a new lot
+$lot = new ParkingLot();
+$lot->location = "test lot";
+$lot->status = 1;
+$lot->available = 200;
+$lot->capacity = 1000;
 $lot->save();
-print '<br />$lot->comment = '.$lot->id_comment.'<br />';
+*/
+/* // create a new comment for testing
+$comment = new Comment();
+$comment->comment = "This lot also sucks";
+$comment->save();
+*/
+$comment1 = Comment::findOne(array("id_comment"=>2), null);
+//$comment2 = Comment::findOne(array("id_comment"=>20), null);
+
+
+$lot = ParkingLot::findOne(array("id_parkinglot"=>1), null);
+if(isset($lot)) {
+    $lot->location = "test lot location";
+    $lot->comment = $comment1;
+    $lot->save();
+    print '<br />$lot->comment = '.$lot->id_comment.'<br />';
+}

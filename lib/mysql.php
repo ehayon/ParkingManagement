@@ -36,6 +36,7 @@ class Database implements DatabaseInterface {
      */
     public function build_sql($conditions) {
         $res = array();
+        var_dump($conditions);
         foreach($conditions as $ck => $cv) {
             $res[] = "`$ck` = '$cv'";
         }

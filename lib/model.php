@@ -91,7 +91,6 @@ abstract class Model {
      */
     public function __set($attr, $val) {
         // check first to see if this is an association
-        print "<br />trying to set: $attr<br />";
         $table =& self::$associations;
         $class = get_called_class();
         // is this $attr part of an association?
@@ -202,7 +201,7 @@ abstract class Model {
         if(!array_key_exists($class, $associations))
             $associations[$class] = array();
 
-        $associations[$class][get_class($entity)] = array(
+        $associations[$class][strtolower(get_class($entity))] = array(
             'type'          =>  'has_one',
             'key'           =>  'id_'.strtolower(get_class($entity)),
             'class_name'    =>  get_class($entity)
