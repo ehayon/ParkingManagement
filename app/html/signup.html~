@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Parking Lot - Sign up</title>
+  <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  
+  <style type="text/css">
+  body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <a class="btn btn-primary" data-toggle="modal" href="#signUpModal">Sign up</a>
+  </div>
+
+  <div class="modal hide fade" id="signUpModal">
+    <div class="modal-header">
+      <button class="close" data-dismiss="modal">x</button>
+      <h3>Sign up</h3>
+    </div>
+    <div class="modal-body">
+      <form class="form-signin">
+        <input type="text" class="input-block-level" placeholder="Username">
+        <input type="text" class="input-block-level" placeholder="First Name">
+        <input type="text" class="input-block-level" placeholder="Last Name">
+        <input type="text" class="input-block-level" placeholder="Email">
+        <input type="password" class="input-block-level" placeholder="Password">
+        <input type="password" class="input-block-level" placeholder="Re-type Password">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn btn-primary">Sign up</a>
+    </div>
+  </div>​
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
