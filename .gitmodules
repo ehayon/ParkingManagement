@@ -1,3 +1,6 @@
 [submodule "lib/php_orm"]
 	path = lib/php_orm
 	url = git://github.com/ehayon/PHP_ORM.git
+[submodule "lib/php_template"]
+	path = lib/php_template
+	url = git@github.com:ehayon/PHP_Templating.git

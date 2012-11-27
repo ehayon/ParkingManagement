@@ -1,11 +1,12 @@
 <html>
 
 <head>
-    <title>Title</title>
+    <title>[title]</title>
+	[javascripts]
 </head>
 
 <body>
-
+	[content]
 </body>
 
 

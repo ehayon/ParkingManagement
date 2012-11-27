@@ -6,8 +6,13 @@
  */
 class ParkingLots extends Controller
 {
-    function index() {
-        print "in index";
+
+    public static function _index() {
+        static::use_template('index', true);
+        $data = array(
+            'username' => 'ethanhayon'
+        );
+        static::render_template($data);
     }
 
 
