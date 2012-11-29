@@ -15,6 +15,7 @@ div.flash {
     font-weight: bold;
     text-align: center;
     opacity: 0.8;
+	border-bottom: 1px solid black;
 }
 
 div.flash.flash-error {

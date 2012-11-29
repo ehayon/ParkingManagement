@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../public/css/users.css" />
 {/css}
 
-{title}Signup{/title}
+{title}Signup Page{/title}
 
 {body}
   [flash]
@@ -20,10 +20,10 @@
     </div>
     <div class="modal-body">
       <form class="form-signin" method="POST" action="./signup">
-        <input type="text" name="username" class="input-block-level" placeholder="Username">
-        <input type="text" name="fname" class="input-block-level" placeholder="First Name">
-        <input type="text" name="lname" class="input-block-level" placeholder="Last Name">
-        <input type="text" name="email" class="input-block-level" placeholder="Email">
+        <input type="text" name="username" class="input-block-level" value ="[username]" placeholder="Username">
+        <input type="text" name="fname" class="input-block-level" value="[fname]" placeholder="First Name">
+        <input type="text" name="lname" class="input-block-level" value="[lname]" placeholder="Last Name">
+        <input type="text" name="email" class="input-block-level" value="[email]" placeholder="Email">
         <input type="password" name="password" class="input-block-level" placeholder="Password">
         <input type="password" name="password_confirmation" class="input-block-level" placeholder="Re-type Password">
 		<input type="submit" value="Sign Up" class="brn btn-primary" />
