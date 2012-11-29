@@ -63,3 +63,11 @@ CREATE TABLE IF NOT EXISTS `user_parkinglots_subscriptions`(
 	FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`)
 );
 
+CREATE TABLE IF NOT EXISTS `parkinglots_comments`(
+	`id_parkinglot` INT NOT NULL,
+	`id_comment` INT NOT NULL,
+	PRIMARY KEY(`id_parkinglot`,`id_comment`),
+	FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`),
+	FOREIGN KEY(`id_comment`) REFERENCES comments(`id_comment`)
+);
+
