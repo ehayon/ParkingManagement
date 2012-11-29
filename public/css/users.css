@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+
+div.flash {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    height: 15px;
+    padding: 5px;
+    padding-bottom: 10px;
+    color: #ffffff;
+    font-size: 13pt;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0.8;
+}
+
+div.flash.flash-error {
+    background-color: #ff0000;
+}
+
+div.flash.flash-notice {
+    color: #000000;
+    background-color: #F29100;
+}
+
