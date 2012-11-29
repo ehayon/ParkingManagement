@@ -1,6 +1,14 @@
 %%layout:app/views/layout.tpl%%
 
+{css}
+<link rel="stylesheet" href="../public/css/users.css" />
+{/css}
+
+{title}Signup{/title}
+
 {body}
+  [flash]
+
   <div class="container">
     <a class="btn btn-primary" data-toggle="modal" href="#signUpModal">Sign up</a>
   </div>

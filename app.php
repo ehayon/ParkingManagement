@@ -1,4 +1,6 @@
 <?php
+if(!session_id()) session_start();
+
 define('APP_PATH', realpath(dirname(__FILE__)));
 
 // load in the model class
@@ -9,6 +11,10 @@ require_once(APP_PATH.'/lib/php_template/lib/template.php');
 
 // load in the controller class
 require_once(APP_PATH.'/lib/controller.php');
+
+// load in any helpers
+require_once(APP_PATH.'/lib/helpers/crypt.php');
+require_once(APP_PATH.'/lib/helpers/flash.php');
 
 // load in all of the models
 require_once(APP_PATH.'/app/models/parkinglot.php');
@@ -28,7 +34,7 @@ Model::setDB($db);
 // what resource are they trying to reach?
 $routes = array(
   	'GET:/signup' => 'Users::signup',
-	'POST:/signup' => 'Users::create',
+    'POST:/signup' => 'Users::create',
     'GET:/parkinglots' => 'ParkingLots::index'
 );
 

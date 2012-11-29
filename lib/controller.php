@@ -24,8 +24,19 @@ abstract class Controller
 	public static function render_template($data) {
 		// find %%layout:<path>%% 
 		// render it with the template
-		$tpl = new Template(realpath(dirname(__FILE__)).'/../app/views/layout.tpl');
 		static::$template->values($data);
+        $flash = "";
+        if(isset($_SESSION['flash'])) {
+            // show the flash messages
+            foreach($_SESSION['flash'] as $f) {
+                $type = $f['type'];
+                $message = $f['message'];
+                $flash .= "<div class=\"flash flash-$type\">$message</div>";
+            }
+            unset($_SESSION['flash']);
+        }
+        static::$template->set('flash', $flash);
+
 		print static::$template->render();
 	}
 }
