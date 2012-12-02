@@ -1,0 +1,16 @@
+h1 a {
+  color: #b2b2b2;
+  text-decoration: none;
+}
+
+h1 a:hover {
+  color: #a2a2a2;
+  text-decoration: none;
+}
+
+label.bold {
+  font-size: 12pt;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+  font-weight: bold;
+}

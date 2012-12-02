@@ -9,6 +9,7 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	<link rel="stylesheet" href="../public/css/layout.css" />
     [css]
 </head>
 
@@ -18,7 +19,7 @@
 		<div class="container" style="padding-top: 10px;">
 			<div class="row">
 				<div class="span7">
-					<h1>Park Smart</h1>
+					<h1><a href="./index">Park Smart</a></h1>
 				</div>
 				[top_right]
 			</div>

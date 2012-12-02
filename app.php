@@ -42,6 +42,8 @@ $routes = array(
   	'GET:/signup' => 'Users::signup',
     'POST:/signup' => 'Users::create',
 	'POST:/login' => 'Sessions::login',
+	'GET:/logout' => 'Sessions::logout',
+	'GET:/dashboard' => 'Users::dashboard',
     'GET:/parkinglots' => 'ParkingLots::index'
 );
 

@@ -47,7 +47,7 @@ class Users extends Controller {
 		if($failed) {
 			// and back to the signup page we go...
 			$_SESSION['form_data'] = $_POST;	
-			Main::_signup();
+			redirect_to("signup");
 			return false;
 		}
 
@@ -72,8 +72,12 @@ class Users extends Controller {
 			foreach($user->validation_errors as $err)
 				add_flash('error', $err['attr']." ".$err['error']);
 			$_SESSION['form_data'] = $_POST;	
-			Main::_signup();
+			redirect_to("signup");
 		}
+		
+		$_SESSION['id_user'] = $user->id;
+		redirect_to("dashboard");
+		
 		add_flash('notice', 'User successfully created!');
 
 	}

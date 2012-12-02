@@ -14,7 +14,7 @@ class Sessions extends Controller {
 		if(empty($username) || empty($password)) {
 			$failed = true;
 			add_flash('error', 'Please enter a username and password');
-			Main::_index();
+			redirect_to("index");
 			return false;
 		}
 
@@ -25,7 +25,7 @@ class Sessions extends Controller {
 		if(!isset($user)) {
 		  	$failed = true;
 			add_flash("error", "Incorrect username/password combination");
-			Main::_index();
+			redirect_to("index");
 			return false;
 		}
 		
@@ -42,21 +42,22 @@ class Sessions extends Controller {
 		if(!isset($user)) {
 			$failed = true;
 			add_flash("error", "Incorrect username/password combination");
-			Main::_index();
+			redirect_to("index");
 			return false;
 		}	
 
 		$_SESSION['id_user'] = $user->id;
 
-		Users::_dashboard();
+		redirect_to("dashboard");
 		return true;
 	}
 
 	public static function _logout() {
 		if(isset($_SESSION['id_user'])) {
 			unset($_SESSION['id_user']);
-			Main::_index();	
 		}
+		add_flash('notice', 'You have been logged out!');
+		redirect_to("index");	
 		return true;
 	}
 

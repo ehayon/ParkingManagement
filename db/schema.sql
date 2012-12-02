@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `parkinglots`(
 	`capacity` INT,
 	`location` TEXT,
 	`id_comment` INT NOT NULL,
+	`spaces` CHAR(50)
 	PRIMARY KEY(`id_parkinglot`)
 );
 	

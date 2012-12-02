@@ -6,26 +6,7 @@
 
 {title}Park Smart{/title}
 {top_right}
-	<div class="span5">
-		<div class="row">
-			<form method="POST" action="./login">
-				<div class="span2">
-					<label>Username</label>
-					<input type="text" name="username">
-				</div>
-
-				<div class="span2">
-					<label>Password</label>
-					<input type="password" name="password">
-				</div>
-
-				<div class="span1">
-					<label>&nbsp;</label>
-					<input type="submit" value="Log In" class="btn" style="margin-top: 0;">
-				</div>
-			</form>
-		</div>
-	</div>
+	[top-right]
 {/top_right}
 
 {body}

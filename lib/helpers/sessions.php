@@ -1,9 +1,14 @@
 <?php
 
+function redirect_to($location) {
+	header("Location: ./$location");
+}
+
 function login_required($role_level) {	
 	if(!isset($_SESSION['id_user'])) {
   		// no user is logged in
-		Main::_index();
+		add_flash('error', 'You are not authorized to access this resource');
+		redirect_to("index");
 		exit();
 	}
 
@@ -19,7 +24,8 @@ function login_required($role_level) {
 
 	if(isset($role) && !($role->action >= $role_level)) {
 		// not allowed to access this...
-	  	User::_dashboard();
+	  	redirect_to("dashboard");
+		add_flash('error', 'You are not authorized to access this resource');
 		exit();
 	}
 	return $user;

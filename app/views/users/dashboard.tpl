@@ -11,7 +11,7 @@
 	  <div class="pull-right">
 		<div>Welcome, <strong>[fname] [lname]</strong></div>
 		[admin-link]
-		<div class="logout-link"><a href="#">Logout</a></div>
+		<div class="logout-link"><a href="./logout">Logout</a></div>
 	  </div>
 	</span>
 {/top_right}
