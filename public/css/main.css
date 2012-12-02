@@ -1,0 +1,10 @@
+body {
+  padding-top: 150px;
+}
+input {
+  width: 160px;
+}
+
+#sign-up-form input[type="text"], #sign-up-form input[type="password"] {
+  width: 100%;
+}

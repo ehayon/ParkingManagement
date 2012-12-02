@@ -1,37 +1,7 @@
 <?php
 
 class Users extends Controller {
-	public static function _signup() {
-		static::use_template('signup', true);
 
-		$username = "";
-		$fname = "";
-		$lname = "";
-		$email = "";
-
-		if(isset($_SESSION['form_data'])) {
-			if(isset($_SESSION['form_data']['username'])) 
-				$username = $_SESSION['form_data']['username'];	
-			if(isset($_SESSION['form_data']['fname'])) 
-				$fname = $_SESSION['form_data']['fname'];	
-			if(isset($_SESSION['form_data']['lname'])) 
-				$lname = $_SESSION['form_data']['lname'];	
-			if(isset($_SESSION['form_data']['email'])) 
-				$email = $_SESSION['form_data']['email'];	
-		}
-		
-		// clear the form data
-		unset($_SESSION['form_data']);
-
-		$data = array(
-			'username' => $username,
-			'fname' => $fname,
-			'lname' => $lname,
-			'email' => $email
-		);
-	
-		static::render_template($data);
-	}
 	public static function _create() {
 		// create a new user
 		// handle hashing the password
@@ -77,7 +47,7 @@ class Users extends Controller {
 		if($failed) {
 			// and back to the signup page we go...
 			$_SESSION['form_data'] = $_POST;	
-			static::_signup();
+			Main::_signup();
 			return false;
 		}
 
@@ -96,7 +66,7 @@ class Users extends Controller {
 			foreach($user->validation_errors as $err)
 				add_flash('error', $err['attr']." ".$err['error']);
 			$_SESSION['form_data'] = $_POST;	
-			static::_signup();
+			Main::_signup();
 		}
 		add_flash('notice', 'User successfully created!');
 

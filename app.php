@@ -25,6 +25,7 @@ require_once(APP_PATH.'/app/models/associations.php');
 
 require_once(APP_PATH.'/app/controllers/parkinglots.php');
 require_once(APP_PATH.'/app/controllers/users.php');
+require_once(APP_PATH.'/app/controllers/main.php');
 
 $db = new Database();
 $db->setup("localhost", "root", "", "ParkingManagementSystem");
@@ -33,6 +34,7 @@ Model::setDB($db);
 
 // what resource are they trying to reach?
 $routes = array(
+  	'GET:/index' => 'Main::index',
   	'GET:/signup' => 'Users::signup',
     'POST:/signup' => 'Users::create',
     'GET:/parkinglots' => 'ParkingLots::index'
