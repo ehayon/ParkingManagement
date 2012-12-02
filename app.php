@@ -15,19 +15,23 @@ require_once(APP_PATH.'/lib/controller.php');
 // load in any helpers
 require_once(APP_PATH.'/lib/helpers/crypt.php');
 require_once(APP_PATH.'/lib/helpers/flash.php');
+require_once(APP_PATH.'/lib/helpers/sessions.php');
 
 // load in all of the models
 require_once(APP_PATH.'/app/models/parkinglot.php');
 require_once(APP_PATH.'/app/models/comment.php');
 require_once(APP_PATH.'/app/models/user.php');
+require_once(APP_PATH.'/app/models/role.php');
 
 require_once(APP_PATH.'/app/models/associations.php');
 
 require_once(APP_PATH.'/app/controllers/parkinglots.php');
 require_once(APP_PATH.'/app/controllers/users.php');
 require_once(APP_PATH.'/app/controllers/main.php');
+require_once(APP_PATH.'/app/controllers/sessions.php');
 
 $db = new Database();
+// credentials for mysql
 $db->setup("localhost", "root", "", "ParkingManagementSystem");
 
 Model::setDB($db);
@@ -37,6 +41,7 @@ $routes = array(
   	'GET:/index' => 'Main::index',
   	'GET:/signup' => 'Users::signup',
     'POST:/signup' => 'Users::create',
+	'POST:/login' => 'Sessions::login',
     'GET:/parkinglots' => 'ParkingLots::index'
 );
 

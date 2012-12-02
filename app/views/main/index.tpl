@@ -8,19 +8,15 @@
 {top_right}
 	<div class="span5">
 		<div class="row">
-			<form method="POST" action="">
+			<form method="POST" action="./login">
 				<div class="span2">
-					<label>Email</label>
-					<input type="text">
-					<label class="checkbox">
-						<input type="checkbox"> Keep me logged in
-					</label>
+					<label>Username</label>
+					<input type="text" name="username">
 				</div>
 
 				<div class="span2">
 					<label>Password</label>
-					<input type="password">
-					<span class="help-block"><a href="#">Forgot your password?</a></span>
+					<input type="password" name="password">
 				</div>
 
 				<div class="span1">
@@ -33,6 +29,7 @@
 {/top_right}
 
 {body}
+	[flash]
 	<div class="container">
 		<div class="row">
 			<div class="span7">

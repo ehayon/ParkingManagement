@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	`fname` VARCHAR(30) NOT NULL,
 	`lname` VARCHAR(50) NOT NULL,
 	`email` VARCHAR(60) NOT NULL,
-	`hashed_password` VARCHAR(60) NOT NULL,
+	`hashed_password` VARCHAR(120) NOT NULL,
 	`password_salt` VARCHAR(60) NOT NULL,
 	PRIMARY KEY(`id_user`)
 );

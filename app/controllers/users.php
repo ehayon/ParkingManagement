@@ -61,6 +61,12 @@ class Users extends Controller {
 		if(isset($pass)) $user->hashed_password = $pass['hashed_password'];
 		if(isset($pass)) $user->password_salt = $pass['password_salt'];
 
+		$role = Role::findOne(array(
+			'action' => 1
+		), NULL);
+		
+		$user->role = $role;
+
 		if(!($user->save())) {
 			// an error occured...
 			foreach($user->validation_errors as $err)
@@ -70,5 +76,30 @@ class Users extends Controller {
 		}
 		add_flash('notice', 'User successfully created!');
 
+	}
+
+	public static function _dashboard() {
+		static::use_template('dashboard', true);
+
+		$user = login_required(1);
+		
+		// if is_admin: put link to admin panel in $admin_link
+		// list of parking lots
+		// parking-lot info loaded with ajax
+		// parking-lot announcements loaded with ajax
+		// parking-lot comments loaded with ajax
+		// parking-lot canvas stuff loaded with ajax
+
+		$admin_link = "";
+		
+		if($user->role->action > 1)
+			$admin_link = "<div class=\"admin-link\"><a href=\"#\">Admin Panel</a></div>";
+
+		$data = array(
+			'fname' => $user->fname,
+			'lname' => $user->lname,
+			'admin-link' => $admin_link
+		);
+		static::render_template($data);
 	}
 }

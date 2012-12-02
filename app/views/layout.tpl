@@ -18,7 +18,6 @@
 		<div class="container" style="padding-top: 10px;">
 			<div class="row">
 				<div class="span7">
-					<label>&nbsp;</label>
 					<h1>Park Smart</h1>
 				</div>
 				[top_right]

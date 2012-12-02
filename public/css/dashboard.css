@@ -1,0 +1,12 @@
+div.pull-right {
+  margin-top: 5px;
+  font-size: 13pt;
+}
+div.admin-link {
+  font-size: 12pt;
+  text-align: right;
+  float: left;
+}
+div.logout-link {
+  float: right;
+}
