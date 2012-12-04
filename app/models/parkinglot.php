@@ -6,5 +6,5 @@
  */
 class ParkingLot extends Model
 {
-
+	protected static $table_name = "parkinglots";
 }

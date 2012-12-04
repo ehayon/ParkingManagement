@@ -15,6 +15,13 @@ function login_required($role_level) {
 	$user = User::findOne(array(
 		'id_user' => $_SESSION['id_user']
 	), NULL);
+	
+	if(!isset($user)) {
+		// user not found
+		add_flash('error', 'You are not authorized to access this resource');
+	  	redirect_to("index");
+		exit();
+	}
 
 	// check the role level
 	$role = NULL;

@@ -17,3 +17,21 @@
 {/top_right}
 
 
+{body}
+	<select id="parkinglot-list"  name="parkinglot-list">
+
+	</select>
+
+	<img src="data:image/png;base64,[imgdata]" />
+
+	<div class="parkinglot-canvas">
+		<canvas id="parkinglot">
+			
+		</canvas>
+	</div>
+{/body}
+
+{javascript-includes}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script language="javascript" src="../public/js/dashboard.js"></script>
+{/javascript-includes}

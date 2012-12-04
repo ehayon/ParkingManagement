@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	`email` VARCHAR(60) NOT NULL,
 	`hashed_password` VARCHAR(120) NOT NULL,
 	`password_salt` VARCHAR(60) NOT NULL,
+   `id_role` INT NOT NULL,
 	PRIMARY KEY(`id_user`)
 );
 
@@ -27,7 +28,6 @@ CREATE TABLE IF NOT EXISTS `parkinglots`(
 	`capacity` INT,
 	`location` TEXT,
 	`id_comment` INT NOT NULL,
-	`spaces` CHAR(50)
 	PRIMARY KEY(`id_parkinglot`)
 );
 	
@@ -72,3 +72,22 @@ CREATE TABLE IF NOT EXISTS `parkinglots_comments`(
 	FOREIGN KEY(`id_comment`) REFERENCES comments(`id_comment`)
 );
 
+CREATE TABLE IF NOT EXISTS `parkingspaces`(
+	`id_parkingspace` INT NOT NULL AUTO_INCREMENT,
+	`state` CHAR(1) NOT NULL,
+	`x` INT NOT NULL,
+	`y` INT NOT NULL,
+	PRIMARY KEY(`id_parkingspace`)
+);
+
+CREATE TABLE IF NOT EXISTS `parkinglots_parkingspaces`(
+	`id_parkinglot` INT NOT NULL,
+	`id_parkingspace` INT NOT NULL,
+	PRIMARY KEY(`id_parkinglot`,`id_parkingspace`),
+	FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`),
+	FOREIGN KEY(`id_parkingspace`) REFERENCES parkingspaces(`id_parkingspace`)
+);
+
+
+INSERT INTO `roles` (`action`, `description`) VALUES(1, 'General User');
+INSERT INTO `roles` (`action`, `description`) VALUES(2, 'Admin');

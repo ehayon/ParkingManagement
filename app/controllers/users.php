@@ -47,7 +47,7 @@ class Users extends Controller {
 		if($failed) {
 			// and back to the signup page we go...
 			$_SESSION['form_data'] = $_POST;	
-			redirect_to("signup");
+			redirect_to("index");
 			return false;
 		}
 
@@ -61,6 +61,7 @@ class Users extends Controller {
 		if(isset($pass)) $user->hashed_password = $pass['hashed_password'];
 		if(isset($pass)) $user->password_salt = $pass['password_salt'];
 
+
 		$role = Role::findOne(array(
 			'action' => 1
 		), NULL);
@@ -69,10 +70,11 @@ class Users extends Controller {
 
 		if(!($user->save())) {
 			// an error occured...
+      error_log("Error creating user");
 			foreach($user->validation_errors as $err)
 				add_flash('error', $err['attr']." ".$err['error']);
 			$_SESSION['form_data'] = $_POST;	
-			redirect_to("signup");
+			redirect_to("index");
 		}
 		
 		$_SESSION['id_user'] = $user->id;
@@ -98,6 +100,7 @@ class Users extends Controller {
 		
 		if($user->role->action > 1)
 			$admin_link = "<div class=\"admin-link\"><a href=\"#\">Admin Panel</a></div>";
+
 
 		$data = array(
 			'fname' => $user->fname,

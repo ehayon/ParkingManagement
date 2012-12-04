@@ -22,6 +22,7 @@ require_once(APP_PATH.'/app/models/parkinglot.php');
 require_once(APP_PATH.'/app/models/comment.php');
 require_once(APP_PATH.'/app/models/user.php');
 require_once(APP_PATH.'/app/models/role.php');
+require_once(APP_PATH.'/app/models/parkingspace.php');
 
 require_once(APP_PATH.'/app/models/associations.php');
 
@@ -31,20 +32,23 @@ require_once(APP_PATH.'/app/controllers/main.php');
 require_once(APP_PATH.'/app/controllers/sessions.php');
 
 $db = new Database();
-// credentials for mysql
+
+// credentials for mysql - this is the only place you need to change them
 $db->setup("localhost", "root", "", "ParkingManagementSystem");
 
 Model::setDB($db);
 
 // what resource are they trying to reach?
 $routes = array(
-  	'GET:/index' => 'Main::index',
-  	'GET:/signup' => 'Users::signup',
-    'POST:/signup' => 'Users::create',
-	'POST:/login' => 'Sessions::login',
-	'GET:/logout' => 'Sessions::logout',
-	'GET:/dashboard' => 'Users::dashboard',
-    'GET:/parkinglots' => 'ParkingLots::index'
+  'GET:/index' => 'Main::index',
+  'GET:/signup' => 'Users::signup',
+  'POST:/signup' => 'Users::create',
+  'POST:/login' => 'Sessions::login',
+  'GET:/logout' => 'Sessions::logout',
+  'GET:/dashboard' => 'Users::dashboard',
+  'GET:/parkinglots' => 'ParkingLots::index',
+  'GET:/get_lots' => 'ParkingLots::get_lots',
+  'GET:/get_lot' => 'ParkingLots::get_lot'
 );
 
 // routing stuff
