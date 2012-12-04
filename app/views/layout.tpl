@@ -27,6 +27,7 @@
 	</div>
 </div>
 	<script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>	
+
 	[body]
 	[javascript-includes]
 </body>

@@ -13,22 +13,16 @@ $(document).ready(function() {
 	  });
 	}
 	
-	function get_lot_info(id) {
-		$.get('./get_lot?id='+id, function(d) {
-			console.log(d);
-		});
-	}
 
 	$('#parkinglot-list').on('change', function(e) {
 		// perform an ajax call to ./get_lot?id=<id>
 		var val = $('#parkinglot-list').val();
-	  	$.get('./get_lot?id='+val, function(res) {
-			console.log(res);
+	  	$.get('./get_lot?id='+val, function(d) {
+			$('#parkinglot-image').html('<img id="lot-image" src="data:image/png;base64,'+d.lot_image+'" />');
 		});
 	
 	});
 
-	get_lot_info(1);
 	update_parkinglot_list();
 	//setInterval(update_parkinglot_list, 2000);
 });

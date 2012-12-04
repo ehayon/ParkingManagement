@@ -50,9 +50,11 @@ class ParkingLots extends Controller
 
 		$res['lot_info'] = $lot->data;
 		$res['spaces'] = array();
+		$res['lot_image'] = base64_encode($lot->image);
 		foreach($spaces as $space) {
 			array_push($res['spaces'], $space->data);
 		}
+		header('Content-type: application/json');
 		print(json_encode($res));
 	}
 

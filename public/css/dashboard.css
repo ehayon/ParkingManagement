@@ -10,3 +10,9 @@ div.admin-link {
 div.logout-link {
   float: right;
 }
+
+div#parkinglot-image {
+	border: 1px solid black;
+	padding: 8px;
+	width: 500px;
+}

@@ -18,12 +18,12 @@
 
 
 {body}
-	<select id="parkinglot-list"  name="parkinglot-list">
+	<div id="option">
+	  <select id="parkinglot-list"  name="parkinglot-list"></select>
+	</div>
 
-	</select>
-
-	<img src="data:image/png;base64,[imgdata]" />
-
+	<div id="parkinglot-image">
+	</div>
 	<div class="parkinglot-canvas">
 		<canvas id="parkinglot">
 			
