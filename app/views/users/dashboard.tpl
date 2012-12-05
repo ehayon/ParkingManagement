@@ -18,17 +18,26 @@
 
 
 {body}
-	<div id="option">
-	  <select id="parkinglot-list"  name="parkinglot-list"></select>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="span7">
+	      <div id="option">
+	        <select id="parkinglot-list" name="parkinglot-list"></select>
+  	    </div>
 
-	<div id="parkinglot-image">
-	</div>
-	<div class="parkinglot-canvas">
-		<canvas id="parkinglot">
-			
-		</canvas>
-	</div>
+        <div id="parkinglot-image">
+
+        </div>
+      </div>
+
+      <div id="announcements" class="span5">
+        <h3>Announcements</h3>
+        <div id="announcements-body">
+          <p>Select a parking lot to see announcements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 {/body}
 
 {javascript-includes}

@@ -43,14 +43,21 @@ class ParkingLots extends Controller
 		$lot = ParkingLot::findOne(array(
 			'id_parkinglot' => $id
 		), NULL);
-
+    if(!isset($lot)) {
+      exit(1);
+    }
 		// include the parkingspaces in the response
 		$spaces = $lot->parkingspaces;
-		$res = array();
+    $res = array();
+    $announcements = array();
+
+    foreach($lot->announcements as $announcement)
+      array_push($announcements, $announcement->data);
 
 		$res['lot_info'] = $lot->data;
 		$res['spaces'] = array();
-		$res['lot_image'] = base64_encode($lot->image);
+    $res['lot_image'] = base64_encode($lot->image);
+    $res['announcements'] = $announcements;
 		foreach($spaces as $space) {
 			array_push($res['spaces'], $space->data);
 		}

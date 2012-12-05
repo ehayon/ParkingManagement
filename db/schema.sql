@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `parkinglots`(
 	`capacity` INT,
 	`location` TEXT,
 	`id_comment` INT NOT NULL,
+  `image` BLOB,
 	PRIMARY KEY(`id_parkinglot`)
 );
 	
@@ -86,6 +87,20 @@ CREATE TABLE IF NOT EXISTS `parkinglots_parkingspaces`(
 	PRIMARY KEY(`id_parkinglot`,`id_parkingspace`),
 	FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`),
 	FOREIGN KEY(`id_parkingspace`) REFERENCES parkingspaces(`id_parkingspace`)
+);
+
+CREATE TABLE IF NOT EXISTS `announcements`(
+  `id_announcement` INT NOT NULL,
+  `announcement` VARCHAR(140) NOT NULL,
+  PRIMARY KEY(`id_announcement`)
+);
+
+CREATE TABLE IF NOT EXISTS `parkinglots_announcements`(
+  `id_parkinglot` INT NOT NULL,
+  `id_announcement` INT NOT NULL,
+  PRIMARY KEY(`id_parkinglot`,`id_announcement`),
+  FOREIGN KEY(`id_parkinglot`) REFERENCES parkinglots(`id_parkinglot`),
+  FOREIGN KEY(`id_announcement`) REFERENCES announcements(`id_announcement`)
 );
 
 

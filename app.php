@@ -23,6 +23,7 @@ require_once(APP_PATH.'/app/models/comment.php');
 require_once(APP_PATH.'/app/models/user.php');
 require_once(APP_PATH.'/app/models/role.php');
 require_once(APP_PATH.'/app/models/parkingspace.php');
+require_once(APP_PATH.'/app/models/announcement.php');
 
 require_once(APP_PATH.'/app/models/associations.php');
 

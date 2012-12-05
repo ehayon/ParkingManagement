@@ -12,7 +12,61 @@ div.logout-link {
 }
 
 div#parkinglot-image {
-	border: 1px solid black;
-	padding: 8px;
-	width: 500px;
+  position: relative;
 }
+
+div#announcements h3 {
+  text-align: center;
+  margin-top: 35px;
+}
+
+div#parkinglot-image img {
+  position: absolute;
+}
+
+.available {
+  background-image: none;
+  width: 80px;
+  height: 128px;
+  top: 11px;
+}
+
+.taken {
+  background-image: url('../../public/img/car.png');
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 128px;
+  top: 11px;
+  background-color: red;
+}
+.car {
+  position: absolute;
+  width: 110px;
+  height: 147px;
+  background-image: url('../../public/img/car.png');
+  background-repeat: no-repeat;
+}
+#spot1 {
+  left: 10px;
+}
+
+#spot2 {
+  left: 120px;
+}
+
+#spot3 {
+  left: 230px;
+}
+
+#spot4 {
+  left: 340px;
+}
+
+#spot5 {
+  left: 450px;
+}
+
+#spot6 {
+  left: 560px;
+}
+
