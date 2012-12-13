@@ -13,6 +13,10 @@ Roy Bahian
 * You can log in with my account: username: ethanhayon, password: test
 * The only functioning parkinglot is "Hayden Parkinglot" - should be the
   first item in the dropdown list on the dashboard
+* To access the site:
+  http://localhost/cs546/ParkingManagement/index.php/index
+	* remember to use index.php/<route>
+	* index.php brings everything together
 
 ---
 
@@ -25,4 +29,13 @@ layouts, which can have layouts, etc...)
 	* The entire source code for the repo is also hosted on github (it's
 	  private) - let me know if you want access, I can add you to the
 repo.
+
+---
+
+* Follows the MVC style
+	* Controllers are located in app/controllers
+	* Models in app/models
+	* bootstrapper: app.php
+	* Routes are defined in the bootstrapper
+
 
