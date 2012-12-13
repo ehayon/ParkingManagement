@@ -28,8 +28,8 @@ layouts, which can have layouts, etc...)
 	* Templating engine can be found publicly here:
 	  https://github.com/ehayon/PHP_Templating
 	* ORM can be found here: https://github.com/ehayon/PHP_ORM
-	* The entire source code for the repo is also hosted on github (it's
-	  private) - let me know if you want access, I can add you to the
+	* The entire source code for the repo is also hosted on github here:
+	  https://github.com/ehayon/ParkingManagement
 repo.
 
 ---
