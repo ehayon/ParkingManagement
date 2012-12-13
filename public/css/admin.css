@@ -1,0 +1,28 @@
+div.pull-right {
+  margin-top: 5px;
+  font-size: 13pt;
+}
+
+div.logout-link {
+  float: right;
+}
+div.dashboard-link {
+  font-size: 12pt;
+  text-align: right;
+  float: left;
+}
+h4 {
+		margin-left: 50px;
+}
+
+#edit-parkinglot-container {
+	padding: 10px;
+	border: 1px solid #b2b2b2;
+	border-radius: 10px;
+}
+
+#edit-users {
+	padding: 10px;
+	border: 1px solid #b2b2b2;
+	border-radius: 10px;
+}

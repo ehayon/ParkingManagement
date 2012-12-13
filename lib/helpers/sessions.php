@@ -4,6 +4,12 @@ function redirect_to($location) {
 	header("Location: ./$location");
 }
 
+function validate_email($email) {
+	//$re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
+	$re = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+	return preg_match($re, $email);
+}
+
 function login_required($role_level) {	
 	if(!isset($_SESSION['id_user'])) {
   		// no user is logged in

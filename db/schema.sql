@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS `parkinglots`(
 	`capacity` INT,
 	`location` TEXT,
 	`id_comment` INT NOT NULL,
-  `image` BLOB,
+	`image` BLOB,
+	`description` TEXT,
 	PRIMARY KEY(`id_parkinglot`)
 );
 	
@@ -78,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `parkingspaces`(
 	`state` CHAR(1) NOT NULL,
 	`x` INT NOT NULL,
 	`y` INT NOT NULL,
+	`rot` INT NOT NULL,
 	PRIMARY KEY(`id_parkingspace`)
 );
 
@@ -90,8 +92,9 @@ CREATE TABLE IF NOT EXISTS `parkinglots_parkingspaces`(
 );
 
 CREATE TABLE IF NOT EXISTS `announcements`(
-  `id_announcement` INT NOT NULL,
+  `id_announcement` INT NOT NULL AUTO_INCREMENT,
   `announcement` VARCHAR(140) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(`id_announcement`)
 );
 

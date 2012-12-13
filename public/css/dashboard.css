@@ -10,14 +10,53 @@ div.admin-link {
 div.logout-link {
   float: right;
 }
-
+div#option {
+  float: left;
+}
 div#parkinglot-image {
   position: relative;
+  margin-top: 15px;
+  height: 400px;
+  width: 540px;
+  position: relative;
+  border: 1px solid #b2b2b2;
+  border-radius: 10px;
+}
+
+div#lot-description {
+  	margin-top: 10px;
+	width: 540px;
+	color: #444444;
+	font-size: 11pt;
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+	text-align: center;
 }
 
 div#announcements h3 {
   text-align: center;
   margin-top: 35px;
+}
+
+div#comments h3 {
+	text-align: center;
+	margin-top: 35px;
+}
+
+p.date {
+  text-align: center;
+}
+
+div#announcements-body {
+	border: 1px solid #b2b2b2;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+div#comments-body {
+	border: 1px solid #b2b2b2;
+	border-radius: 10px;
+	padding: 10px;
 }
 
 div#parkinglot-image img {
@@ -41,32 +80,62 @@ div#parkinglot-image img {
 }
 .car {
   position: absolute;
-  width: 110px;
-  height: 147px;
+  width: 38px;
+  height: 45px;
+  background-size: 38px 45px;
   background-image: url('../../public/img/car.png');
   background-repeat: no-repeat;
-}
-#spot1 {
-  left: 10px;
+  
 }
 
-#spot2 {
-  left: 120px;
+.loader {
+  	display: none;
+  	float: left;
+	margin-top: -4px;
+	margin-left: 6px;
+	width: 32px;
+	height: 32px;
+	background-image: url(../../public/img/loader.gif);
+	background-repeat: no-repeat;
 }
-
-#spot3 {
-  left: 230px;
+div#parkinglot-name {
+  text-align: center;
 }
-
-#spot4 {
-  left: 340px;
+div#space-count {
+  display: none;
+  margin-top: 10px;
+  height: 60px;
+  margin-left: auto;
+  margin-bottom: 20px;
 }
-
-#spot5 {
-  left: 450px;
+div#capacity {
+  font-size: 12pt;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  font-variant: small-caps;
+  text-align: center;
+  background-color: rgba(255,255,0,0.2);
+  float: left;
+  width: 50%;
+  padding: 10px 0 10px 0;
 }
-
-#spot6 {
-  left: 560px;
+div#capacity-data {
+  font-weight: bold;
+  font-size: 18pt;
+}
+div#available {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-size: 12pt;
+  background-color: rgba(0,255,0,0.2);
+  text-align: center;
+  font-variant: small-caps;
+  float: right;
+  width: 50%;
+  padding: 10px 0 10px 0;
+}
+div#available-data {
+  font-weight: bold;
+  font-size: 18pt;
 }
 

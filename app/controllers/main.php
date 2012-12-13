@@ -34,13 +34,16 @@ class Main extends Controller {
 		  $role = $user->role;
 		  $admin_link = "";
 		  if($role->action > 1)
-			  $admin_link = "<div class=\"admin-link\"><a href=\"#\">Admin Panel</a></div>";
+			  $admin_link = "<div class=\"admin-link\"><a href=\"./admin\">Admin Panel</a></div>";
+
+		  $dashboard_link = "<div class=\"dashboard-link\"><a href=\"./dashboard\">Dashboard</a></div>";
 
 $top_right =<<<EOS
 	<span class="span5">
 	  <div class="pull-right">
 		<div>Welcome, <strong>{$user->fname} {$user->lname}</strong></div>
 		{$admin_link}
+		{$dashboard_link}
 		<div class="logout-link"><a href="./logout">Logout</a></div>
 	  </div>
 	</span>

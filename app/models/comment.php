@@ -6,5 +6,5 @@
  */
 class Comment extends Model
 {
-
+	protected static $table_name = "comments";
 }

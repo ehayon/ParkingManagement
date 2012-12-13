@@ -27,6 +27,11 @@ class Users extends Controller {
 			$failed = true;
 		}
 
+		if (!validate_email($_POST['email'])) {
+			add_flash('error', 'Please enter a valid email address');
+			$failed = true;
+		}
+
 		if(empty($pass_confirmation)) {
 			add_flash('error', 'Please enter a password confirmation');
 			$failed = true;
@@ -70,7 +75,7 @@ class Users extends Controller {
 
 		if(!($user->save())) {
 			// an error occured...
-      error_log("Error creating user");
+			error_log("Error creating user");
 			foreach($user->validation_errors as $err)
 				add_flash('error', $err['attr']." ".$err['error']);
 			$_SESSION['form_data'] = $_POST;	
@@ -99,7 +104,7 @@ class Users extends Controller {
 		$admin_link = "";
 		
 		if($user->role->action > 1)
-			$admin_link = "<div class=\"admin-link\"><a href=\"#\">Admin Panel</a></div>";
+			$admin_link = "<div class=\"admin-link\"><a href=\"./admin\">Admin Panel</a></div>";
 
 
 		$data = array(
@@ -109,4 +114,5 @@ class Users extends Controller {
 		);
 		static::render_template($data);
 	}
+
 }

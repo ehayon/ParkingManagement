@@ -31,6 +31,7 @@ require_once(APP_PATH.'/app/controllers/parkinglots.php');
 require_once(APP_PATH.'/app/controllers/users.php');
 require_once(APP_PATH.'/app/controllers/main.php');
 require_once(APP_PATH.'/app/controllers/sessions.php');
+require_once(APP_PATH.'/app/controllers/admin.php');
 
 $db = new Database();
 
@@ -49,7 +50,16 @@ $routes = array(
   'GET:/dashboard' => 'Users::dashboard',
   'GET:/parkinglots' => 'ParkingLots::index',
   'GET:/get_lots' => 'ParkingLots::get_lots',
-  'GET:/get_lot' => 'ParkingLots::get_lot'
+  'GET:/get_lot' => 'ParkingLots::get_lot',
+  'GET:/admin' => 'Admin::index',
+  'POST:/create_announcement' => 'ParkingLots::create_announcement',
+  'GET:/user_list' => 'Admin::user_list',
+  'GET:/reset_password' => 'Admin::reset_password',
+  'GET:/destroy_user' => 'Admin::destroy_user',
+  'GET:/make_admin' => 'Admin::make_admin',
+  'GET:/update_spot_state' => 'ParkingLots::update_spot_state',
+  'GET:/remove_admin' => 'Admin::remove_admin',
+  'POST:/add_comment' => 'ParkingLots::add_comment'
 );
 
 // routing stuff
